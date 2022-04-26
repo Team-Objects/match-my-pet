@@ -1,1 +1,53 @@
+/* color palette
 
+#8ECAE6 - pale blue
+#219EBC - med blue
+#023047 - dark blue
+#FFB703 - golden yellow
+#FB8500 - rich yellow orange
+
+*/
+
+
+header {
+  display: flex;
+  background-color: #8ECAE6;
+  height: 5em;
+}
+
+header ul li {
+  display: inline-block;
+  padding: 0px 70px 0px 20px;
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 2em;
+  font-style: italic;
+  background-color: #FFB703;
+  text-align: center;
+}
+
+
+#gameContainer {
+  display: flex;
+  margin: 40px 0px 10px 40px;
+  flex-direction: column;
+  background-color: #023047
+}
+
+#cardBoxes {
+  max-width: 800px;
+}
+
+#cardRowOne {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px 5px 10px;
+}
+
+#cardRowTwo {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 10px 10px 10px;
+}

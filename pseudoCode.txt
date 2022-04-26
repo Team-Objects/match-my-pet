@@ -1,0 +1,57 @@
+// keeping my head straight!
+
+get userName
+
+function (userName) {  //satisfies pull from local storage requirement
+if userName is present in localStorage then say "Welcome Back, userName! You're won ## games so far, let's add another to the count!"
+    if userName is not present in local storage then do nothing
+}
+
+get userDifficultySelection
+
+// definition of difficulty
+if userDifficultySelection = Easy then numOfTrials is 15
+else if userDifficultySelection = Med then numOfTrials is 10
+else if userDifficultySelection = Hard then numOfTrials is 5
+
+// definition of the end state for the game
+while all the cards are notMatched || numOfTrials is !0 
+  the game is not over and varGameIsLive is true
+      else !gameisLive (i.e. game over)
+  
+// scoring - we don't care about points, it's Pass/Fail time, Baby!!
+
+// attend to the game board (build it and/or layout the cards)
+
+// game initiation
+   Define a button
+   OnClick call playGame ()
+
+// ongoing game play mechanic (relevant BusMall Code)
+function(){
+    while (numOfTrials > 0 && there are cards remaining) {
+    user selects card, card flips, user selects 2nd card, card flips
+
+    if cards match alert ("You got a match!")
+        else both cards flip back over
+    numOfTrials = -= numOfTrials
+  }
+
+if all cards are matched then
+  alert ("Congrats you won!")
+      winState = true;
+
+if numOfTrials = 0 && there are cards remaining
+  alert ("Aww you're all out of turns! Have a furkid hug & try again!")
+      winState = false;
+
+// local storage
+Goal: put score in local storage and have it be persistent if user goes to a different page (per Audrey: "gameState" might be more advanced and not likely to work as well) - how many times has this user played the game, Audrey suggests storing userName and winCount as oppposed to score
+
+push userName and winState to localStorageArr -- not sure of how this is structured refer to local Storage lab
+
+
+resources: 
+* https://via.placeholder.com/640x360/000000
+* https://place-hold.it
+* 
