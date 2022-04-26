@@ -18,9 +18,9 @@ cardsMatch function - way to determine if cards matched
 
 
 // global variables
-let easyCount = 15;
-let mediumCount = 10;
-let hardCount = 7;
+let easyRounds = 15;
+let mediumRounds = 10;
+let hardRounds = 7;
 
 let cardArray = [];
 
@@ -38,6 +38,8 @@ function Cards(name, fileExstention = 'png'){
 
   cardArray.push(this);
 }
+
+// instantiating cards
 
 // randomize photos
 
