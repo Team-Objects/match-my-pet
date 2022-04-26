@@ -9,6 +9,7 @@
 */
 
 
+
 header {
   display: flex;
   background-color: #8ECAE6;
@@ -26,28 +27,36 @@ h1 {
   font-style: italic;
   background-color: #FFB703;
   text-align: center;
+  height: 2em;
 }
 
+#headerDiv {
+  vertical-align: center;
+}
 
 #gameContainer {
   display: flex;
-  margin: 40px 0px 10px 40px;
+  /* margin: 40px 0px 10px 40px; */
   flex-direction: column;
-  background-color: #023047
+  background-color: #023047;
 }
 
-#cardBoxes {
-  max-width: 800px;
+#cardboxes {
+  background-color: #219EBC;
+  max-width: 1200px;
+  align-self: center;
 }
 
 #cardRowOne {
   flex-direction: row;
   justify-content: space-between;
   margin: 10px 10px 5px 10px;
+  max-width: 1000px;
 }
 
 #cardRowTwo {
   flex-direction: row;
   justify-content: space-between;
   margin: 5px 10px 10px 10px;
+  max-width: 1000px;
 }
