@@ -16,7 +16,11 @@ header {
 
 header ul li {
   display: inline-block;
-  padding: 0px 70px 0px 20px;
+
+  padding: 0em 2em;
+  margin-top: 1em;
+  margin-inline-start: 2em;
+  margin-right: 5em;
   font-size: 1em;
 }
 
@@ -27,13 +31,45 @@ body {
 h1 {
   font-size: 2em;
   font-style: italic;
-  background-color: #FFB703;
   text-align: center;
-  height: 2em;
+  height: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 #headerDiv {
   vertical-align: center;
+}
+
+#match-my-pet-logo {
+  background-color: #023047;
+  color: #8ECAE6;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em 2em;
+  font-size: x-large;
+  font-style: italic;
+}
+
+#game-instructions {
+  background-color: #023047;
+  color: #8ECAE6;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em 2em;
+  font-size: x-large;
+  font-style: italic;
+}
+
+#sxnHomeTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #FFB703;
+}
+
+#page-title {
+  padding: 1em 0em;
 }
 
 #gameContainer {
@@ -61,4 +97,12 @@ h1 {
   justify-content: space-between;
   margin: 5px 10px 10px 10px;
   max-width: 1000px;
+}
+
+footer {
+  display: flex;
+}
+
+footer p {
+  justify-content: last
 }
