@@ -18,32 +18,53 @@ cardsMatch function - way to determine if cards matched
 
 
 // global variables
-let easyRounds = 15;
-let mediumRounds = 10;
-let hardRounds = 7;
+const easyRounds = 15;
+const mediumRounds = 10;
+const hardRounds = 7;
 
-let cardArray = [];
+const cardArray = [];
 
 // constructor functions
 
-function User(name, difficulty){
-  this.name = name;
+function User(userName, difficulty){
+  this.userName = userName;
   this.difficulty = difficulty;
   this.gamesWon = 0;
+  this.gamesPlayed = 0;
 }
 
-function Cards(name, fileExstention = 'png'){
-  this.name = name;
-  this.img = `assets/${name}.${fileExstention}`;
+function Cards(cardName, fileExstention = 'png'){
+  this.cardName = cardName;
+  this.img = `assets/${cardName}.${fileExstention}`;
 
   cardArray.push(this);
 }
 
 // instantiating cards
 
-// randomize photos
+new Cards('greg-facedown');
+new Cards('greg-facedown');
+new Cards('mochi', 'jpg');
+new Cards('mochi', 'jpg');
 
-// event handlers - need: image clicked to display card, 
+// executable functions
+// Fisher-Yates algorithm
+function shuffleArray(tempArr) {
+  for (let i = tempArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = tempArr[i];
+    tempArr[i] = tempArr[j];
+    tempArr[j] = temp;
+  }
+  console.log(tempArr);
+}
+
+shuffleArray(cardArray);
+
+
+
+
+// event handlers - need: image clicked to display card
 
 
 // local storage
