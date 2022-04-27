@@ -106,3 +106,8 @@ footer {
 footer p {
   justify-content: last
 }
+
+img {
+  width: 100px;
+  height: 100px;
+}
