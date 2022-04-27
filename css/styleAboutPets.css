@@ -32,7 +32,7 @@ header ul li {
 }
 
 body {
-  color: #023047;
+  color: #8ECAE6;
 }
 
 h1 {
@@ -54,7 +54,7 @@ h1 {
   margin-bottom: 1px;
 }
 
-#game-instructions {
+#code-fellows-logo {
   background-color: #023047;
   color: #8ECAE6;
   margin-top: 25px;
@@ -64,7 +64,7 @@ h1 {
   font-style: italic;
 }
 
-#sxnHomeTop {
+#sxnPetsTop {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -75,11 +75,27 @@ h1 {
   padding: 1em 0em;
 }
 
-#gameContainer {
+#biosbox {
   display: flex;
-  /* margin: 40px 0px 10px 40px; */
-  flex-direction: column;
+  background-color: #219EBC;
+  align-self: center;
+  max-width: 100%;
+}
+
+#pet-bios {
   background-color: #023047;
+  margin: 15px;
+  align-content: center;
+}
+
+#bios {
+  margin: 5px;
+}
+
+img {
+  width: 300px;
+  border-color:red;
+  border-width: 5px;
 }
 
 #cardboxes {
@@ -88,23 +104,9 @@ h1 {
   align-self: center;
 }
 
-#cardRowOne {
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10px 10px 5px 10px;
-  max-width: 1000px;
-}
-
-#cardRowTwo {
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 5px 10px 10px 10px;
-  max-width: 1000px;
-}
 
 #copyright {
   position: fixed;
   bottom: 0;
   right: 0;
 }
-
