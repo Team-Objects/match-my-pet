@@ -17,8 +17,8 @@ header {
 }
 
 nav {
-  width:50%;
-  margin:auto;
+  width: 50%;
+  margin: auto;
   text-align: center;
   bottom: 0;
 }
@@ -26,8 +26,6 @@ nav {
 header ul li {
   display: inline-block;
   padding: 0em 2em;
-  /* margin-top: auto;
-  margin-right: auto; */
   font-size: 1em;
 }
 
@@ -84,19 +82,27 @@ h1 {
 
 #cardboxes {
   display: grid;
-  grid-template-columns: repeat(6,1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 30px;
   perspective: 1000px;
 }
 
+#cardRowOne div .backcard {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px 5px 10px;
+  max-width: 1000px;
+
+  /* does this need to be here? uncomment if so
 #cardboxes img {
   width:200px;
   height: 200px;
   backface-visibility: hidden;
+*/
 }
 
 .card {
-  position:relative;
+  position: relative;
   transition: transform 1s;
   transform: scale(1);
   transform-style: preserve-3d;
@@ -131,4 +137,3 @@ h1 {
   bottom: 0;
   right: 0;
 }
-

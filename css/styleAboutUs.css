@@ -1,0 +1,148 @@
+/* Common to all pages 
+
+#8ECAE6 - pale blue
+#219EBC - med blue
+#023047 - dark blue
+#FFB703 - golden yellow
+#FB8500 - rich yellow orange */
+
+
+header {
+  display: flex;
+  background-color: #8ECAE6;
+  height: 5em;
+  top: 50%;
+  right: 50%;
+}
+
+nav {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  bottom: 0;
+}
+
+header ul li {
+  display: inline-block;
+  padding: 0em 2em;
+  font-size: 1em;
+}
+
+body {
+  color: #023047;
+}
+
+h1 {
+  font-size: 2em;
+  font-style: italic;
+  height: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#match-my-pet-logo {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+#logo {
+  width: 180px;
+  height: 80px;
+  margin-bottom: 1px;
+}
+
+#sxnTop {
+  /* this holds the logos and the page-title */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #FFB703;
+}
+
+#page-title {
+  padding: 1em 0em;
+}
+
+#gameContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #023047;
+}
+
+#cardboxes {
+  background-color: #219EBC;
+  max-width: 1200px;
+  align-self: center;
+}
+
+#cardRowOne div .backcard {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px 5px 10px;
+  max-width: 1000px;
+}
+
+#cardRowTwo div .backcard {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 10px 10px 10px;
+  max-width: 1000px;
+}
+
+#copyright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
+/* From here down pertains to about-us.html only */
+
+#maybeCodeFellows {
+  /* this is the box on the right of "About Us" same as "game-instructions" on index.html*/
+  background-color: #023047;
+  color: #8ECAE6;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 25px 25px;
+  font-size: x-large;
+  font-style: italic;
+}
+
+#CFlogo {
+  width: 130px;
+  height: 30px;
+  margin-bottom: 1px;
+}
+
+
+
+#sam,
+#vida {
+  /*1st & 3rd */
+  float: left;
+  padding: 0px 15px 15px 0px;
+}
+
+#katharine,
+#dean {
+  /*2nd & 4th */
+  float: right;
+  padding: 0px 0px 15px 15px;
+}
+
+#bioSxn {
+  background-color: #023047;
+  max-width: 1200px;
+}
+
+#bios {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px 50px;
+  background-color: #219EBC;
+
+  align-self: center;
+  font-size: larger;
+  text-align: justify;
+}
