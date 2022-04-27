@@ -11,7 +11,7 @@ let newUserData = null;
 let gameCards = document.getElementsByClassName('card');
 console.log(gameCards);
 // creates an array that holds the html tags with a class of cardFront
-// this grabs the individual img tags so that we can populate them 
+// this grabs the individual img tags so that we can populate them
 let cardFronts = document.getElementsByClassName('cardFront');
 
 // creating new variables for our getCardInfo() function which are also used in our matchChecker() function
@@ -27,14 +27,14 @@ let secondClickParent = null;
 
 // constructor functions
 
-function User(userName, difficulty){
+function User(userName, difficulty) {
   this.userName = userName;
   this.difficulty = difficulty;
   this.gamesWon = 0;
   this.gamesPlayed = 0;
 }
 
-function Cards(cardName, fileExstention = 'png'){
+function Cards(cardName, fileExstention = 'png') {
   this.cardName = cardName;
   this.img = `assets/${cardName}.${fileExstention}`;
 
@@ -86,13 +86,13 @@ formElem.addEventListener('submit', function (event) {
 
 // for loop that adds an event listener to each item in the gameCards array
 // this refers to each card div that contains a front and back card
-for(let i = 0; i < gameCards.length; i++) {
+for (let i = 0; i < gameCards.length; i++) {
   gameCards[i].addEventListener('click', handleCardClick);
 }
 
 // for loop that adds a src and alt id to each item in cardFronts
-// this refers to each img tag that contains a cardFront 
-for(let i = 0; i < cardArray.length; i++) {
+// this refers to each img tag that contains a cardFront
+for (let i = 0; i < cardArray.length; i++) {
   cardFronts[i].src = cardArray[i].img;
   cardFronts[i].alt = cardArray[i].cardName;
 }
@@ -101,7 +101,7 @@ for(let i = 0; i < cardArray.length; i++) {
 // it will check what the value of the clicks variable is and give our globally scoped variables new values
 function getClickInfo(imgClicked) {
   // imgClicked is a placeholder for whatever data we push when we call this function
-  if(clicks === 0) {
+  if (clicks === 0) {
     // firstCardClicked is assigned the previousElementSibling.alt of the cardBack img
     // previousElementSibling.alt will give us the alt id of the pet image (mochi) so that we can use this in our matchChecker
     // previousElementSibling is needed because imgClicked is refering to the cardBack img
@@ -129,9 +129,9 @@ function handleCardClick(event) {
   getClickInfo(imageClicked);
   console.log(firstCardClicked);
   console.log(secondCardClicked);
-  
+
   // helper function to check if alt id matches
-  if(clicks === 2) {
+  if (clicks === 2) {
     // if we have selected 2 images, call another helper function
     matchChecker();
     // reset all of these variables for the next 'round' of clicks
@@ -140,8 +140,18 @@ function handleCardClick(event) {
     clicks = 0;
   }
 
-  if(newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
-    for(let i = 0; i < gameCards.length; i++) {
+
+  const card = document.querySelectorAll('.card');
+
+  function flipCard() {
+    this.classList.toggle('flip');
+  }
+
+  card.forEach(card => card.addEventListener('click', flipCard));
+
+
+  if (newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
+    for (let i = 0; i < gameCards.length; i++) {
       gameCards[i].removeEventListener('click', handleCardClick);
     }
   }
@@ -155,19 +165,19 @@ let cardsLeftToMatch = 6;
 // or add class name for flipped alt1
 
 // helper function - should this be prototype to access User object difficulty?
-function matchChecker(){
+function matchChecker() {
   let cardDiv1 = document.getElementById(firstClickParent);
   let cardDiv2 = document.getElementById(secondClickParent);
-// credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
-  if(firstCardClicked === secondCardClicked){
+  // credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
+  if (firstCardClicked === secondCardClicked) {
     cardDiv1.style.visibility = 'hidden';
     cardDiv2.style.visibility = 'hidden';
     cardsLeftToMatch = cardsLeftToMatch - 1;
-// stretch:    correctMatch++;
+    // stretch:    correctMatch++;
   } else {
-// flip card to reveal back of card
+    // flip card to reveal back of card
   }
-newUserData.difficulty--;
+  newUserData.difficulty--;
 }
 
 
