@@ -32,6 +32,21 @@
         <p>Instructions</p>
       </div>
     </section>
+    <form id="user-input-form">
+      <fieldset>
+        <legend>Choose your level:</legend>
+        <label for="userName" class="required">Username:</label>
+        <input type="text" name="userName" required>
+
+        <label for="difficulty" class="required">Difficulty Level:</label>
+          <select name="difficulty" id="userDifficulty" required>
+            <option value="15">Easy</option>
+            <option value="10">Medium</option>
+            <option value="7">Hard</option>
+          </select>
+          <button type="submit">Lets play!</button>
+      </fieldset>
+    </form>
     <section id="gameContainer">
       <div id="cardboxes">
         <!-- <div id="cardRowOne"> -->
