@@ -1,26 +1,6 @@
 'use strict';
 
-/* needs:
-
-create game board
-
-way to randomize(of shuffle) images
-
-hard code each photo twice (stretch: do we want a way to add more cards and have placeholder photos?)
-
-event handler for click
-cardsMatch function - way to determine if cards matched
-
-
-  */
-
 // DOM references
-
-
-// global variables
-// const easyRounds = 15;
-// const mediumRounds = 10;
-// const hardRounds = 7;
 
 const cardArray = [];
 
@@ -90,13 +70,18 @@ function shuffleArray(tempArr) {
 
 shuffleArray(cardArray);
 
+let showUsGame = document.getElementById('cardboxes');
+showUsGame.style.visibility = 'hidden';
+
 const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
   const userName = event.target.userName.value;
   const difficulty = parseInt(event.target.difficulty.value);
-  console.log(difficulty);
+  console.log(userName);
   newUserData = new User(userName, difficulty);
+
+  showUsGame.style.visibility = 'visible';
 });
 
 // for loop that adds an event listener to each item in the gameCards array
@@ -155,10 +140,16 @@ function handleCardClick(event) {
     clicks = 0;
   }
 
+  if(newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
+    for(let i = 0; i < gameCards.length; i++) {
+      gameCards[i].removeEventListener('click', handleCardClick);
+    }
+  }
+
 }
 
 // stretch: let correctMatch = 0;
-let totalMatches = 6;
+let cardsLeftToMatch = 6;
 
 // flip function into eventListener
 // or add class name for flipped alt1
@@ -171,41 +162,24 @@ function matchChecker(){
   if(firstCardClicked === secondCardClicked){
     cardDiv1.style.visibility = 'hidden';
     cardDiv2.style.visibility = 'hidden';
-    totalMatches = totalMatches - 1;
+    cardsLeftToMatch = cardsLeftToMatch - 1;
 // stretch:    correctMatch++;
   } else {
-// subtract one from difficulty round
 // flip card to reveal back of card
   }
+newUserData.difficulty--;
 }
 
 
 
-//if secondClick === firstClick
-//  ?? maybe
-//  ??
-//      hide div's of both images
-//    
-//  else { subtract from difficulty tally}
 
 
-// variable for times clicked (2)
-// helper function to determine which variable to put the alt id of the clicked image into
-// helper function 
 
-// endGame 
+
+
 
 // *******************
 // AUDREY PLEASEEEE HELP
-
-// event handlers - need: image clicked to display card
-
-
-// We need to contain two event clicks
-// clickOne and clickTwo
-// We need to compare them
-
-// Maybe backup to render func?
 // ********************
 
 // local storage
