@@ -1,12 +1,11 @@
-/* color palette
+/* Common to all pages 
 
 #8ECAE6 - pale blue
 #219EBC - med blue
 #023047 - dark blue
 #FFB703 - golden yellow
-#FB8500 - rich yellow orange
+#FB8500 - rich yellow orange */
 
-*/
 
 header {
   display: flex;
@@ -52,17 +51,8 @@ h1 {
   margin-bottom: 1px;
 }
 
-#game-instructions {
-  background-color: #023047;
-  color: #8ECAE6;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding: 25px 25px;
-  font-size: x-large;
-  font-style: italic;
-}
-
-#sxnHomeTop {
+#sxnTop {
+  /* this holds the logos and the page-title */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -75,7 +65,6 @@ h1 {
 
 #gameContainer {
   display: flex;
-  /* margin: 40px 0px 10px 40px; */
   flex-direction: column;
   background-color: #023047;
 }
@@ -106,7 +95,54 @@ h1 {
   right: 0;
 }
 
-img {
-  width: 100px;
-  height: 100px;
+
+/* From here down pertains to about-us.html only */
+
+#maybeCodeFellows {
+  /* this is the box on the right of "About Us" same as "game-instructions" on index.html*/
+  background-color: #023047;
+  color: #8ECAE6;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 25px 25px;
+  font-size: x-large;
+  font-style: italic;
+}
+
+#CFlogo {
+  width: 130px;
+  height: 30px;
+  margin-bottom: 1px;
+}
+
+
+
+#sam,
+#vida {
+  /*1st & 3rd */
+  float: left;
+  padding: 0px 15px 15px 0px;
+}
+
+#katharine,
+#dean {
+  /*2nd & 4th */
+  float: right;
+  padding: 0px 0px 15px 15px;
+}
+
+#bioSxn {
+  background-color: #023047;
+  max-width: 1200px;
+}
+
+#bios {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px 50px;
+  background-color: #219EBC;
+
+  align-self: center;
+  font-size: larger;
+  text-align: justify;
 }
