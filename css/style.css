@@ -85,14 +85,14 @@ h1 {
   align-self: center;
 }
 
-#cardRowOne {
+#cardRowOne div .backcard  {
   flex-direction: row;
   justify-content: space-between;
   margin: 10px 10px 5px 10px;
   max-width: 1000px;
 }
 
-#cardRowTwo {
+#cardRowTwo div .backcard {
   flex-direction: row;
   justify-content: space-between;
   margin: 5px 10px 10px 10px;

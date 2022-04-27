@@ -24,6 +24,8 @@ const hardRounds = 7;
 
 const cardArray = [];
 
+
+
 // constructor functions
 
 function User(userName, difficulty){
@@ -61,11 +63,82 @@ function shuffleArray(tempArr) {
 
 shuffleArray(cardArray);
 
+let gameCards = document.getElementsByClassName('card');
+console.log(gameCards);
+
+for(let i = 0; i < gameCards.length; i++) {
+  gameCards[i].addEventListener('click', handleCardClick);
+}
+
+let firstCardClicked = null;
+let secondCardClicked = null;
+let clicks = 0;
+
+function getAltId(imgClicked) {
+  // **ADD** grab id of the div (parentElement)
+  if(clicks === 0) {
+    firstCardClicked = imgClicked.previousElementSibling.alt;
+    clicks++;
+  } else {
+    secondCardClicked = imgClicked.previousElementSibling.alt;
+    clicks++;
+  }
+}
+
+function handleCardClick(event) {
+
+  let imageClicked = event.target;
+  console.dir(imageClicked);
+  getAltId(imageClicked);
+  console.log(firstCardClicked);
+  console.log(secondCardClicked);
+  // helper function to check if alt id matches
+
+  // if(clicks === 2) {
+  //   matchChecker(firstCardClicked, secondCardClicked);
+  //   fristCardClicked = null
+  //   secondCardClicked = null
+  //   clicks = null
+  // }
+
+}
+
+let cardFronts = document.getElementsByClassName('cardFront');
+
+for(let i = 0; i < cardArray.length; i++) {
+  cardFronts[i].src = cardArray[i].img;
+  cardFronts[i].alt = cardArray[i].cardName;
+}
+
+// helper function
+//  match checker     
+//  Set variable to cardDiv1 and cardDiv2
+// 
+//  if secondClick === firstClick
+//    cardDiv1.style.visibility = hidden ?? maybe
+//    cardDiv2.style.visibility = hidden ??
+//      hide div's of both images
+//    
+//  else { subtract from difficulty tally}
 
 
+// variable for times clicked (2)
+// helper function to determine which variable to put the alt id of the clicked image into
+// helper function 
+
+
+// *******************
+// AUDREY PLEASEEEE HELP
 
 // event handlers - need: image clicked to display card
 
+
+// We need to contain two event clicks
+// clickOne and clickTwo
+// We need to compare them
+
+// Maybe backup to render func?
+// ********************
 
 // local storage
 
