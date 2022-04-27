@@ -18,11 +18,13 @@ cardsMatch function - way to determine if cards matched
 
 
 // global variables
-const easyRounds = 15;
-const mediumRounds = 10;
-const hardRounds = 7;
+// const easyRounds = 15;
+// const mediumRounds = 10;
+// const hardRounds = 7;
 
 const cardArray = [];
+
+let newUserData = null;
 
 // creates an array that holds the html tags with a class of card
 // this grabs the individual div's that contain a front and back card
@@ -32,13 +34,13 @@ console.log(gameCards);
 // this grabs the individual img tags so that we can populate them 
 let cardFronts = document.getElementsByClassName('cardFront');
 
-// creating new variables for our getAltId() function which are also used in our matchChecker() function
-// firstCardClicked and secondCardClicked will be assigned in the getAltId() function and overwritten in the handleCardClick() function
+// creating new variables for our getCardInfo() function which are also used in our matchChecker() function
+// firstCardClicked and secondCardClicked will be assigned in the getCardInfo() function and overwritten in the handleCardClick() function
 let firstCardClicked = null;
 let secondCardClicked = null;
-// clicks will be added to throughout the getAltId() function
+// clicks will be added to throughout the getCardInfo() function
 let clicks = 0;
-// firstClickParent and secondClickParent are assigned in the getAltId() function
+// firstClickParent and secondClickParent are assigned in the getCardInfo() function
 // this grabs the parent element of cards (the div) so that if the two cards do match we can make them disappear
 let firstClickParent = null;
 let secondClickParent = null;
@@ -88,6 +90,15 @@ function shuffleArray(tempArr) {
 
 shuffleArray(cardArray);
 
+const formElem = document.getElementById('user-input-form');
+formElem.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const userName = event.target.userName.value;
+  const difficulty = parseInt(event.target.difficulty.value);
+  console.log(difficulty);
+  newUserData = new User(userName, difficulty);
+});
+
 // for loop that adds an event listener to each item in the gameCards array
 // this refers to each card div that contains a front and back card
 for(let i = 0; i < gameCards.length; i++) {
@@ -103,7 +114,7 @@ for(let i = 0; i < cardArray.length; i++) {
 
 // this is a helper function which will be called inside our event listener
 // it will check what the value of the clicks variable is and give our globally scoped variables new values
-function getAltId(imgClicked) {
+function getClickInfo(imgClicked) {
   // imgClicked is a placeholder for whatever data we push when we call this function
   if(clicks === 0) {
     // firstCardClicked is assigned the previousElementSibling.alt of the cardBack img
@@ -128,16 +139,16 @@ function handleCardClick(event) {
   let imageClicked = event.target;
   console.dir(imageClicked);
   console.log(imageClicked);
-  // calls our helper method getAltId() and passes our click data as a parameter
-  // this is where we can refer to getAltId() for explanation
-  getAltId(imageClicked);
+  // calls our helper method getCardInfo() and passes our click data as a parameter
+  // this is where we can refer to getCardInfo() for explanation
+  getClickInfo(imageClicked);
   console.log(firstCardClicked);
   console.log(secondCardClicked);
   
   // helper function to check if alt id matches
   if(clicks === 2) {
     // if we have selected 2 images, call another helper function
-    matchChecker(firstCardClicked, secondCardClicked);
+    matchChecker();
     // reset all of these variables for the next 'round' of clicks
     firstCardClicked = null;
     secondCardClicked = null;
@@ -146,19 +157,33 @@ function handleCardClick(event) {
 
 }
 
-
+// stretch: let correctMatch = 0;
+let totalMatches = 6;
 
 // flip function into eventListener
 // or add class name for flipped alt1
 
-// helper function
-//  match checker     
-//  let cardDiv1 = documet.getElementById(firstClickParent);
-//  let cardDiv2 = documet.getElementById(secondClickParent);
+// helper function - should this be prototype to access User object difficulty?
+function matchChecker(){
+  let cardDiv1 = document.getElementById(firstClickParent);
+  let cardDiv2 = document.getElementById(secondClickParent);
+// credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
+  if(firstCardClicked === secondCardClicked){
+    cardDiv1.style.visibility = 'hidden';
+    cardDiv2.style.visibility = 'hidden';
+    totalMatches = totalMatches - 1;
+// stretch:    correctMatch++;
+  } else {
+// subtract one from difficulty round
+// flip card to reveal back of card
+  }
+}
 
-//  if secondClick === firstClick
-//    cardDiv1.style.visibility = hidden ?? maybe
-//    cardDiv2.style.visibility = hidden ??
+
+
+//if secondClick === firstClick
+//  ?? maybe
+//  ??
 //      hide div's of both images
 //    
 //  else { subtract from difficulty tally}
@@ -168,6 +193,7 @@ function handleCardClick(event) {
 // helper function to determine which variable to put the alt id of the clicked image into
 // helper function 
 
+// endGame 
 
 // *******************
 // AUDREY PLEASEEEE HELP
