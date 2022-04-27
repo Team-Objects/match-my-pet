@@ -24,6 +24,25 @@ const hardRounds = 7;
 
 const cardArray = [];
 
+// creates an array that holds the html tags with a class of card
+// this grabs the individual div's that contain a front and back card
+let gameCards = document.getElementsByClassName('card');
+console.log(gameCards);
+// creates an array that holds the html tags with a class of cardFront
+// this grabs the individual img tags so that we can populate them 
+let cardFronts = document.getElementsByClassName('cardFront');
+
+// creating new variables for our getAltId() function which are also used in our matchChecker() function
+// firstCardClicked and secondCardClicked will be assigned in the getAltId() function and overwritten in the handleCardClick() function
+let firstCardClicked = null;
+let secondCardClicked = null;
+// clicks will be added to throughout the getAltId() function
+let clicks = 0;
+// firstClickParent and secondClickParent are assigned in the getAltId() function
+// this grabs the parent element of cards (the div) so that if the two cards do match we can make them disappear
+let firstClickParent = null;
+let secondClickParent = null;
+
 // constructor functions
 
 function User(userName, difficulty){
@@ -46,6 +65,14 @@ new Cards('greg-facedown');
 new Cards('greg-facedown');
 new Cards('mochi', 'jpg');
 new Cards('mochi', 'jpg');
+new Cards('Irish-Sitting');
+new Cards('Irish-Sitting');
+new Cards('bentley');
+new Cards('bentley');
+new Cards('tippy');
+new Cards('tippy');
+new Cards('harold');
+new Cards('harold');
 
 // executable functions
 // Fisher-Yates algorithm
@@ -61,11 +88,99 @@ function shuffleArray(tempArr) {
 
 shuffleArray(cardArray);
 
+// for loop that adds an event listener to each item in the gameCards array
+// this refers to each card div that contains a front and back card
+for(let i = 0; i < gameCards.length; i++) {
+  gameCards[i].addEventListener('click', handleCardClick);
+}
+
+// for loop that adds a src and alt id to each item in cardFronts
+// this refers to each img tag that contains a cardFront 
+for(let i = 0; i < cardArray.length; i++) {
+  cardFronts[i].src = cardArray[i].img;
+  cardFronts[i].alt = cardArray[i].cardName;
+}
+
+// this is a helper function which will be called inside our event listener
+// it will check what the value of the clicks variable is and give our globally scoped variables new values
+function getAltId(imgClicked) {
+  // imgClicked is a placeholder for whatever data we push when we call this function
+  if(clicks === 0) {
+    // firstCardClicked is assigned the previousElementSibling.alt of the cardBack img
+    // previousElementSibling.alt will give us the alt id of the pet image (mochi) so that we can use this in our matchChecker
+    // previousElementSibling is needed because imgClicked is refering to the cardBack img
+    firstCardClicked = imgClicked.previousElementSibling.alt;
+    // firstClickParent is assigned the parentElement.id
+    // this means it is assigned the id of the parent div (row1card1... ect)
+    firstClickParent = imgClicked.parentElement.id;
+    clicks++;
+  } else {
+    // repeats above but for second card
+    secondCardClicked = imgClicked.previousElementSibling.alt;
+    secondClickParent = imgClicked.parentElement.id;
+    clicks++;
+  }
+}
+
+//event Listener
+function handleCardClick(event) {
+  // this assignes imageClicked the html tag we click on (cardBack)
+  let imageClicked = event.target;
+  console.dir(imageClicked);
+  console.log(imageClicked);
+  // calls our helper method getAltId() and passes our click data as a parameter
+  // this is where we can refer to getAltId() for explanation
+  getAltId(imageClicked);
+  console.log(firstCardClicked);
+  console.log(secondCardClicked);
+  
+  // helper function to check if alt id matches
+  if(clicks === 2) {
+    // if we have selected 2 images, call another helper function
+    matchChecker(firstCardClicked, secondCardClicked);
+    // reset all of these variables for the next 'round' of clicks
+    firstCardClicked = null;
+    secondCardClicked = null;
+    clicks = 0;
+  }
+
+}
 
 
+
+// flip function into eventListener
+// or add class name for flipped alt1
+
+// helper function
+//  match checker     
+//  let cardDiv1 = documet.getElementById(firstClickParent);
+//  let cardDiv2 = documet.getElementById(secondClickParent);
+
+//  if secondClick === firstClick
+//    cardDiv1.style.visibility = hidden ?? maybe
+//    cardDiv2.style.visibility = hidden ??
+//      hide div's of both images
+//    
+//  else { subtract from difficulty tally}
+
+
+// variable for times clicked (2)
+// helper function to determine which variable to put the alt id of the clicked image into
+// helper function 
+
+
+// *******************
+// AUDREY PLEASEEEE HELP
 
 // event handlers - need: image clicked to display card
 
+
+// We need to contain two event clicks
+// clickOne and clickTwo
+// We need to compare them
+
+// Maybe backup to render func?
+// ********************
 
 // local storage
 
