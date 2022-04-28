@@ -1,4 +1,4 @@
-/* color palette
+/* Common to all pages 
 
 #8ECAE6 - pale blue
 #219EBC - med blue
@@ -62,8 +62,46 @@ h1 {
   padding: 1em 0em;
 }
 
+/* Specific to index.html */
+
+#gameContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #023047;
+}
+
+#cardboxes {
+  background-color: #219EBC;
+  max-width: 1200px;
+  align-self: center;
+}
+
+#cardRowOne div .backcard {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px 5px 10px;
+  max-width: 1000px;
+}
+
+#cardRowTwo div .backcard {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 10px 10px 10px;
+  max-width: 1000px;
+}
+
 /* 
-#code-fellows-logo {
+#copyright {
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+}
+
+
+/* From here down pertains to about-us.html only */
+
+#maybeCodeFellows {
+  /* this is the box on the right of "About Us" same as "game-instructions" on index.html*/
   background-color: #023047;
   color: #8ECAE6;
   margin-top: 25px;
@@ -71,7 +109,29 @@ h1 {
   padding: 25px 25px;
   font-size: x-large;
   font-style: italic;
-} */
+}
+
+#CFlogo {
+  width: 130px;
+  height: 30px;
+  margin-bottom: 1px;
+}
+
+#sam,
+#vida {
+  /*1st & 3rd */
+  float: left;
+  padding: 0px 15px 15px 0px;
+  width: 225px;
+}
+
+#katharine,
+#dean {
+  /*2nd & 4th */
+  float: right;
+  padding: 0px 0px 15px 15px;
+  width: 225px;
+}
 
 #bioSxn {
   display: flex;
@@ -80,39 +140,20 @@ h1 {
   justify-content: center;
 }
 
-#biosbox {
-  display: flex;
-  background-color: #219EBC;
-  align-self: center;
-  max-width: 1200px;
-}
-
 #bios {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   padding: 50px 50px;
   background-color: #219EBC;
+  max-width: 1200px;
   font-size: larger;
   text-align: justify;
 }
 
-img {
-  width: 300px;
-  margin: 10px 10px 10px 20px;
-}
-
-#bios p {
-  padding: 0px 20px 20px 20px;
-  text-align: justify;
-}
-
-#bios h5 {
-  padding: 5px 0px 3px 20px;
+h5 {
   font-weight: bold;
 }
 
-#copyright {
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
+footer {
+  color: #8ECAE6;
 }
