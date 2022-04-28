@@ -11,7 +11,7 @@ let newUserData = null;
 let gameCards = document.getElementsByClassName('card');
 console.log(gameCards);
 // creates an array that holds the html tags with a class of cardFront
-// this grabs the individual img tags so that we can populate them
+// this grabs the individual img tags so that we can populate them 
 let cardFronts = document.getElementsByClassName('cardFront');
 
 // creating new variables for our getCardInfo() function which are also used in our matchChecker() function
@@ -24,6 +24,10 @@ let clicks = 0;
 // this grabs the parent element of cards (the div) so that if the two cards do match we can make them disappear
 let firstClickParent = null;
 let secondClickParent = null;
+
+let retrievedUser = localStorage.getItem('user');
+
+let parsedUser = JSON.parse(retrievedUser);
 
 // constructor functions
 
@@ -40,6 +44,10 @@ function Cards(cardName, fileExstention = 'png') {
 
   cardArray.push(this);
 }
+
+if(retrievedUser) {
+  newUserData = parsedUser;
+} 
 
 // instantiating cards
 
@@ -77,7 +85,7 @@ const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
   const userName = event.target.userName.value;
-  const difficulty = parseInt(event.target.difficulty.value);
+  let difficulty = parseInt(event.target.difficulty.value);
   console.log(userName);
   newUserData = new User(userName, difficulty);
 
@@ -91,7 +99,7 @@ for (let i = 0; i < gameCards.length; i++) {
 }
 
 // for loop that adds a src and alt id to each item in cardFronts
-// this refers to each img tag that contains a cardFront
+// this refers to each img tag that contains a cardFront 
 for (let i = 0; i < cardArray.length; i++) {
   cardFronts[i].src = cardArray[i].img;
   cardFronts[i].alt = cardArray[i].cardName;
@@ -129,7 +137,7 @@ function handleCardClick(event) {
   getClickInfo(imageClicked);
   console.log(firstCardClicked);
   console.log(secondCardClicked);
-
+  
   // helper function to check if alt id matches
   if (clicks === 2) {
     // if we have selected 2 images, call another helper function
@@ -139,8 +147,6 @@ function handleCardClick(event) {
     secondCardClicked = null;
     clicks = 0;
   }
-
-
   const card = document.querySelectorAll('.card');
 
   function flipCard() {
@@ -154,8 +160,17 @@ function handleCardClick(event) {
     for (let i = 0; i < gameCards.length; i++) {
       gameCards[i].removeEventListener('click', handleCardClick);
     }
+    if(newUserData.difficulty === 0){
+      newUserData.gamesPlayed++;
+      
+    } else if(cardsLeftToMatch === 0) {
+      newUserData.gamesPlayed++;
+      newUserData.gamesWon++;
+    }
+    let stringifiedProducts = JSON.stringify(newUserData);
+  
+    localStorage.setItem('user', stringifiedProducts);
   }
-
 }
 
 // stretch: let correctMatch = 0;
@@ -168,16 +183,16 @@ let cardsLeftToMatch = 6;
 function matchChecker() {
   let cardDiv1 = document.getElementById(firstClickParent);
   let cardDiv2 = document.getElementById(secondClickParent);
-  // credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
+// credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
   if (firstCardClicked === secondCardClicked) {
     cardDiv1.style.visibility = 'hidden';
     cardDiv2.style.visibility = 'hidden';
     cardsLeftToMatch = cardsLeftToMatch - 1;
-    // stretch:    correctMatch++;
+// stretch:    correctMatch++;
   } else {
-    // flip card to reveal back of card
+// flip card to reveal back of card
   }
-  newUserData.difficulty--;
+newUserData.difficulty--;
 }
 
 
