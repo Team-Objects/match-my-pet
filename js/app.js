@@ -3,6 +3,7 @@
 // DOM references
 
 const cardArray = [];
+let userArray = [];
 
 let newUserData = null;
 
@@ -36,6 +37,8 @@ function User(userName, difficulty) {
   this.difficulty = difficulty;
   this.gamesWon = 0;
   this.gamesPlayed = 0;
+
+  userArray.push(this);
 }
 
 function Cards(cardName, fileExstention = 'png') {
@@ -45,9 +48,9 @@ function Cards(cardName, fileExstention = 'png') {
   cardArray.push(this);
 }
 
-if(retrievedUser) {
-  newUserData = parsedUser;
-} 
+// if(retrievedUser) {
+//   newUserData = parsedUser;
+// } 
 
 // instantiating cards
 
@@ -84,12 +87,21 @@ showUsGame.style.visibility = 'hidden';
 const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
-  const userName = event.target.userName.value;
+  let userName = event.target.userName.value;
   let difficulty = parseInt(event.target.difficulty.value);
   console.log(userName);
-  newUserData = new User(userName, difficulty);
-
-  showUsGame.style.visibility = 'visible';
+  if (retrievedUser) {
+    userArray = parsedUser;
+    for(let i = 0; i < parsedUser.length; i++) {
+      if (userName === parsedUser[i].userName) {
+        newUserData = parsedUser[i];
+        newUserData.difficulty = difficulty;
+      }
+    }
+  } else {
+    newUserData = new User(userName, difficulty);
+  }
+    showUsGame.style.visibility = 'visible';
 });
 
 // for loop that adds an event listener to each item in the gameCards array
@@ -143,7 +155,7 @@ function handleCardClick(event) {
   getClickInfo(imageClicked);
   console.log(firstCardClicked);
   console.log(secondCardClicked);
-  
+
   // helper function to check if alt id matches
   if (clicks === 2) {
     // if we have selected 2 images, call another helper function
@@ -166,15 +178,15 @@ function handleCardClick(event) {
     for (let i = 0; i < gameCards.length; i++) {
       gameCards[i].removeEventListener('click', handleCardClick);
     }
-    if(newUserData.difficulty === 0){
+    if (newUserData.difficulty === 0) {
       newUserData.gamesPlayed++;
-      
-    } else if(cardsLeftToMatch === 0) {
+
+    } else if (cardsLeftToMatch === 0) {
       newUserData.gamesPlayed++;
       newUserData.gamesWon++;
     }
-    let stringifiedProducts = JSON.stringify(newUserData);
-  
+    let stringifiedProducts = JSON.stringify(userArray);
+
     localStorage.setItem('user', stringifiedProducts);
   }
 }
@@ -189,16 +201,16 @@ let cardsLeftToMatch = 6;
 function matchChecker() {
   let cardDiv1 = document.getElementById(firstClickParent);
   let cardDiv2 = document.getElementById(secondClickParent);
-// credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
+  // credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
   if (firstCardClicked === secondCardClicked) {
     cardDiv1.style.visibility = 'hidden';
     cardDiv2.style.visibility = 'hidden';
     cardsLeftToMatch = cardsLeftToMatch - 1;
-// stretch:    correctMatch++;
+    // stretch:    correctMatch++;
   } else {
     unFlip();
   }
-newUserData.difficulty--;
+  newUserData.difficulty--;
 }
 
 function unFlip() {
