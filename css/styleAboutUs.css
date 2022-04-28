@@ -115,8 +115,6 @@ h1 {
   margin-bottom: 1px;
 }
 
-
-
 #sam,
 #vida {
   /*1st & 3rd */
@@ -132,8 +130,9 @@ h1 {
 }
 
 #bioSxn {
+  display: flex;
   background-color: #023047;
-  max-width: 1200px;
+  align-items: center;
 }
 
 #bios {
@@ -141,8 +140,7 @@ h1 {
   flex-wrap: wrap;
   padding: 50px 50px;
   background-color: #219EBC;
-
-  align-self: center;
+  max-width: 1200px;
   font-size: larger;
   text-align: justify;
 }
