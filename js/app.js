@@ -104,6 +104,8 @@ for (let i = 0; i < cardArray.length; i++) {
   cardFronts[i].src = cardArray[i].img;
   cardFronts[i].alt = cardArray[i].cardName;
 }
+let firstParent = null;
+let secondParent = null;
 
 // this is a helper function which will be called inside our event listener
 // it will check what the value of the clicks variable is and give our globally scoped variables new values
@@ -113,6 +115,8 @@ function getClickInfo(imgClicked) {
     // firstCardClicked is assigned the previousElementSibling.alt of the cardBack img
     // previousElementSibling.alt will give us the alt id of the pet image (mochi) so that we can use this in our matchChecker
     // previousElementSibling is needed because imgClicked is refering to the cardBack img
+    imgClicked.parentElement.classList.add('flip');
+    firstParent = imgClicked.parentElement;
     firstCardClicked = imgClicked.previousElementSibling.alt;
     // firstClickParent is assigned the parentElement.id
     // this means it is assigned the id of the parent div (row1card1... ect)
@@ -120,6 +124,8 @@ function getClickInfo(imgClicked) {
     clicks++;
   } else {
     // repeats above but for second card
+    imgClicked.parentElement.classList.add('flip');
+    secondParent = imgClicked.parentElement;
     secondCardClicked = imgClicked.previousElementSibling.alt;
     secondClickParent = imgClicked.parentElement.id;
     clicks++;
@@ -147,13 +153,13 @@ function handleCardClick(event) {
     secondCardClicked = null;
     clicks = 0;
   }
-  const card = document.querySelectorAll('.card');
 
-  function flipCard() {
-    this.classList.toggle('flip');
-  }
+  // function flipCard() {
+  //   console.log("THIS",this);
+  //   this.classList.toggle('flip');
+  // }
 
-  card.forEach(card => card.addEventListener('click', flipCard));
+  // card.forEach(card => card.addEventListener('click', flipCard));
 
 
   if (newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
@@ -190,9 +196,16 @@ function matchChecker() {
     cardsLeftToMatch = cardsLeftToMatch - 1;
 // stretch:    correctMatch++;
   } else {
-// flip card to reveal back of card
+    unFlip();
   }
 newUserData.difficulty--;
+}
+
+function unFlip() {
+  setTimeout(() => {
+    firstParent.classList.remove('flip');
+    secondParent.classList.remove('flip');
+  }, 2000)
 }
 
 
