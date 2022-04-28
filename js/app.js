@@ -14,7 +14,7 @@ let difficultySelected = document.getElementById('userDifficulty');
 let gameCards = document.getElementsByClassName('card');
 console.log(gameCards);
 // creates an array that holds the html tags with a class of cardFront
-// this grabs the individual img tags so that we can populate them
+// this grabs the individual img tags so that we can populate them 
 let cardFronts = document.getElementsByClassName('cardFront');
 
 // creating new variables for our getCardInfo() function which are also used in our matchChecker() function
@@ -50,8 +50,14 @@ function Cards(cardName, fileExstention = 'png') {
   cardArray.push(this);
 }
 
+
 if(retrievedUser) {
   newUserData = parsedUser; }
+
+// if(retrievedUser) {
+//   newUserData = parsedUser;
+// } 
+
 
 // instantiating cards
 
@@ -89,6 +95,7 @@ const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
   let userName = event.target.userName.value;
+
   difficultySelected = parseInt(event.target.difficulty.value);
   console.log(userName);
   if (retrievedUser) {
@@ -103,6 +110,7 @@ formElem.addEventListener('submit', function (event) {
     newUserData = new User(userName);
   }
   showUsGame.style.visibility = 'visible';
+
 });
 
 
@@ -113,7 +121,7 @@ for (let i = 0; i < gameCards.length; i++) {
 }
 
 // for loop that adds a src and alt id to each item in cardFronts
-// this refers to each img tag that contains a cardFront
+// this refers to each img tag that contains a cardFront 
 for (let i = 0; i < cardArray.length; i++) {
   cardFronts[i].src = cardArray[i].img;
   cardFronts[i].alt = cardArray[i].cardName;
@@ -180,14 +188,18 @@ function handleCardClick(event) {
     for (let i = 0; i < gameCards.length; i++) {
       gameCards[i].removeEventListener('click', handleCardClick);
     }
+
     if (difficultySelected === 0) {
       newUserData.gamesPlayed++;
       endGame();
 
+
     } else if (cardsLeftToMatch === 0) {
       newUserData.gamesPlayed++;
       newUserData.gamesWon++;
+
       endGame();
+
     }
     let stringifiedProducts = JSON.stringify(userArray);
 
@@ -223,6 +235,7 @@ function unFlip() {
     secondParent.classList.remove('flip');
   }, 1100);
 }
+
 
 
 function endGame(){
