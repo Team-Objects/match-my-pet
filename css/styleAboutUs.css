@@ -29,11 +29,11 @@ header ul li {
 
 body {
   color: #023047;
+  font-family:'Franklin Gothic Medium';
 }
 
 h1 {
   font-size: 2em;
-  font-family: 'Franklin Gothic Medium';
   height: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
