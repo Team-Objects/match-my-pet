@@ -243,7 +243,7 @@ function unFlip() {
 
 function endGame() {
   if (difficultySelected === 0 || cardsLeftToMatch === 0) {
-    alert(`Game over ${newUserData.userName}! Lets play again!`);
+    alert(`Game over ${newUserData.userName}!`);
     //https://developer.mozilla.org/en-US/docs/Web/API/Location/reload
     location.replace('leaderboard.html');
   }
