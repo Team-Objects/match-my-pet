@@ -7,6 +7,8 @@ let userArray = [];
 
 let newUserData = null;
 
+let difficultySelected = document.getElementById('userDifficulty');
+
 // creates an array that holds the html tags with a class of card
 // this grabs the individual div's that contain a front and back card
 let gameCards = document.getElementsByClassName('card');
@@ -32,9 +34,9 @@ let parsedUser = JSON.parse(retrievedUser);
 
 // constructor functions
 
-function User(userName, difficulty) {
+function User(userName) {
   this.userName = userName;
-  this.difficulty = difficulty;
+  // this.difficulty = difficulty;
   this.gamesWon = 0;
   this.gamesPlayed = 0;
 
@@ -48,14 +50,19 @@ function Cards(cardName, fileExstention = 'png') {
   cardArray.push(this);
 }
 
+
+if(retrievedUser) {
+  newUserData = parsedUser; }
+
 // if(retrievedUser) {
 //   newUserData = parsedUser;
 // } 
 
+
 // instantiating cards
 
-new Cards('greg-facedown');
-new Cards('greg-facedown');
+new Cards('greg-sleep', 'jpeg');
+new Cards('greg-sleep', 'jpeg');
 new Cards('mochi', 'jpg');
 new Cards('mochi', 'jpg');
 new Cards('Irish-Sitting');
@@ -88,21 +95,24 @@ const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
   let userName = event.target.userName.value;
-  let difficulty = parseInt(event.target.difficulty.value);
+
+  difficultySelected = parseInt(event.target.difficulty.value);
   console.log(userName);
   if (retrievedUser) {
     userArray = parsedUser;
-    for(let i = 0; i < parsedUser.length; i++) {
+    for (let i = 0; i < parsedUser.length; i++) {
       if (userName === parsedUser[i].userName) {
         newUserData = parsedUser[i];
-        newUserData.difficulty = difficulty;
+        // newUserData.difficulty = difficulty;
       }
     }
   } else {
-    newUserData = new User(userName, difficulty);
+    newUserData = new User(userName);
   }
-    showUsGame.style.visibility = 'visible';
+  showUsGame.style.visibility = 'visible';
+
 });
+
 
 // for loop that adds an event listener to each item in the gameCards array
 // this refers to each card div that contains a front and back card
@@ -174,16 +184,22 @@ function handleCardClick(event) {
   // card.forEach(card => card.addEventListener('click', flipCard));
 
 
-  if (newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
+  if (difficultySelected === 0 || cardsLeftToMatch === 0) {
     for (let i = 0; i < gameCards.length; i++) {
       gameCards[i].removeEventListener('click', handleCardClick);
     }
-    if (newUserData.difficulty === 0) {
+
+    if (difficultySelected === 0) {
       newUserData.gamesPlayed++;
+      endGame();
+
 
     } else if (cardsLeftToMatch === 0) {
       newUserData.gamesPlayed++;
       newUserData.gamesWon++;
+
+      endGame();
+
     }
     let stringifiedProducts = JSON.stringify(userArray);
 
@@ -197,7 +213,7 @@ let cardsLeftToMatch = 6;
 // flip function into eventListener
 // or add class name for flipped alt1
 
-// helper function - should this be prototype to access User object difficulty?
+
 function matchChecker() {
   let cardDiv1 = document.getElementById(firstClickParent);
   let cardDiv2 = document.getElementById(secondClickParent);
@@ -210,20 +226,25 @@ function matchChecker() {
   } else {
     unFlip();
   }
-  newUserData.difficulty--;
+  difficultySelected--;
 }
 
 function unFlip() {
   setTimeout(() => {
     firstParent.classList.remove('flip');
     secondParent.classList.remove('flip');
-  }, 2000)
+  }, 1100);
 }
 
 
 
-
-
+function endGame(){
+  if(difficultySelected === 0 || cardsLeftToMatch === 0){
+    alert(`Game over ${newUserData.userName}! Lets play again!` );
+    //https://developer.mozilla.org/en-US/docs/Web/API/Location/reload
+    location.reload();
+  }
+}
 
 
 
