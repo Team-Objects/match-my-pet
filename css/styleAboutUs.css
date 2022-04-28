@@ -91,7 +91,7 @@ h1 {
   max-width: 1000px;
 }
 
-/* 
+
 #copyright {
   position: fixed;
   bottom: 0px;
@@ -137,7 +137,7 @@ h1 {
 #bioSxn {
   display: flex;
   background-color: #023047;
-  align-content: center;
+  align-items: center;
   justify-content: center;
 }
 
