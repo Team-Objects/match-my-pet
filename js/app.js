@@ -51,8 +51,9 @@ function Cards(cardName, fileExstention = 'png') {
 }
 
 
-if(retrievedUser) {
-  newUserData = parsedUser; }
+if (retrievedUser) {
+  newUserData = parsedUser;
+}
 
 // if(retrievedUser) {
 //   newUserData = parsedUser;
@@ -104,6 +105,8 @@ formElem.addEventListener('submit', function (event) {
       if (userName === parsedUser[i].userName) {
         newUserData = parsedUser[i];
         // newUserData.difficulty = difficulty;
+      } else if (i === parsedUser.length-1){
+        newUserData = new User(userName);
       }
     }
   } else {
@@ -238,13 +241,15 @@ function unFlip() {
 
 
 
-function endGame(){
-  if(difficultySelected === 0 || cardsLeftToMatch === 0){
-    alert(`Game over ${newUserData.userName}! Lets play again!` );
+function endGame() {
+  if (difficultySelected === 0 || cardsLeftToMatch === 0) {
+    alert(`Game over ${newUserData.userName}! Lets play again!`);
     //https://developer.mozilla.org/en-US/docs/Web/API/Location/reload
-    location.reload();
+    location.replace('leaderboard.html');
   }
 }
+
+
 
 
 
