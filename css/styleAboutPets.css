@@ -4,9 +4,7 @@
 #219EBC - med blue
 #023047 - dark blue
 #FFB703 - golden yellow
-#FB8500 - rich yellow orange
-
-*/
+#FB8500 - rich yellow orange */
 
 header {
   display: flex;
@@ -17,22 +15,20 @@ header {
 }
 
 nav {
-  width:50%;
-  margin:auto;
+  width: 50%;
+  margin: auto;
   text-align: center;
-  bottom: 0;
 }
 
 header ul li {
-  display: inline-block;
+  display: inline;
   padding: 0em 2em;
-  /* margin-top: auto;
-  margin-right: auto; */
   font-size: 1em;
+  align-items: bottom;
 }
 
 body {
-  color: #8ECAE6;
+  color: #023047;
 }
 
 h1 {
@@ -54,17 +50,8 @@ h1 {
   margin-bottom: 1px;
 }
 
-#code-fellows-logo {
-  background-color: #023047;
-  color: #8ECAE6;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding: 25px 25px;
-  font-size: x-large;
-  font-style: italic;
-}
-
-#sxnPetsTop {
+#sxnTop {
+  /* this holds the logos and the page-title */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -75,38 +62,57 @@ h1 {
   padding: 1em 0em;
 }
 
+/* 
+#code-fellows-logo {
+  background-color: #023047;
+  color: #8ECAE6;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 25px 25px;
+  font-size: x-large;
+  font-style: italic;
+} */
+
+#bioSxn {
+  display: flex;
+  background-color: #023047;
+  align-content: center;
+  justify-content: center;
+}
+
 #biosbox {
   display: flex;
   background-color: #219EBC;
   align-self: center;
-  max-width: 100%;
-}
-
-#pet-bios {
-  background-color: #023047;
-  margin: 15px;
-  align-content: center;
+  max-width: 1200px;
 }
 
 #bios {
-  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 50px;
+  background-color: #219EBC;
+  font-size: larger;
+  text-align: justify;
 }
 
 img {
   width: 300px;
-  border-color:red;
-  border-width: 5px;
+  margin: 10px 10px 10px 20px;
 }
 
-#cardboxes {
-  background-color: #219EBC;
-  max-width: 1200px;
-  align-self: center;
+#bios p {
+  padding: 0px 20px 20px 20px;
+  text-align: justify;
 }
 
+#bios h5 {
+  padding: 5px 0px 3px 20px;
+  font-weight: bold;
+}
 
 #copyright {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 0px;
+  right: 0px;
 }
