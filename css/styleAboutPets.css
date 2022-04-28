@@ -62,47 +62,54 @@ h1 {
   padding: 1em 0em;
 }
 
-/* 
-#code-fellows-logo {
-  background-color: #023047;
-  color: #8ECAE6;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding: 25px 25px;
-  font-size: x-large;
-  font-style: italic;
-} */
 
 #bioSxn {
   display: flex;
+  flex-direction: column;
   background-color: #023047;
-  align-content: center;
-  justify-content: center;
 }
 
 #biosbox {
   display: flex;
   background-color: #219EBC;
-  align-self: center;
   max-width: 1200px;
+  align-self: center;
 }
 
 #bios {
   display: flex;
   flex-direction: column;
-  padding: 50px 50px;
   background-color: #219EBC;
   font-size: larger;
   text-align: justify;
 }
 
-img {
+#Irish {
   width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#Mochi {
+  width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#Greg {
+  width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#ShelbyGang {
+  width: 300px;
+  height: 440px;
   margin: 10px 10px 10px 20px;
 }
 
 #bios p {
-  padding: 0px 20px 20px 20px;
+  padding: 0px 15px 20px 20px;
   text-align: justify;
 }
 
