@@ -1,0 +1,161 @@
+/* color palette
+
+#8ECAE6 - pale blue
+#219EBC - med blue
+#023047 - dark blue
+#FFB703 - golden yellow
+#FB8500 - rich yellow orange
+
+*/
+
+header {
+  display: flex;
+  background-color: #8ECAE6;
+  height: 5em;
+  top: 50%;
+  right: 50%;
+}
+
+nav {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  bottom: 0;
+}
+
+header ul li {
+  display: inline-block;
+  padding: 0em 2em;
+  font-size: 1em;
+}
+
+body {
+  color: #023047;
+  font-family:'Franklin Gothic Medium';
+}
+
+h1 {
+  font-size: 2em;
+/*  font-family: 'Franklin Gothic Medium'; */
+  height: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#match-my-pet-logo {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  width: 180px;
+  height: 80px;
+  margin-bottom: 1px;
+}
+
+/* #logo { this appears to be the MMP logo
+  width: 180px;
+  height: 80px;
+  margin-bottom: 1px;
+} */
+
+#game-instructions {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+#sxnHomeTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #FFB703;
+}
+
+#page-title {
+  padding: 1em 0em;
+}
+
+#gameContainer {
+  display: flex;
+  /* margin: 40px 0px 10px 40px; */
+  flex-direction: column;
+  background-color: #023047;
+}
+
+#cardboxes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 30px;
+  perspective: 1000px;
+}
+
+#cardRowOne div .backcard {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px 5px 10px;
+  max-width: 1000px;
+}
+
+#cardboxes img {
+  width: 200px;
+  height: 200px;
+  backface-visibility: hidden;
+}
+
+
+.card {
+  position: relative;
+  transition: transform 1s;
+  transform: scale(1);
+  transform-style: preserve-3d;
+
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+/* .card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+} */
+
+.cardFront {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg)
+}
+
+.cardBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+#instructions {
+  text-align: center;
+  background-color: #8ECAE6;
+  font-size: 20px;
+  height: 250px;
+  padding-top: 20px;
+}
+
+#footer {
+  padding: 20px;
+  height: 10px;
+  bottom: 10px;
+}
+
+#copyright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+#user-input-form {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #023047;
+  
+}

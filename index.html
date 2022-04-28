@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Home</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-pets.html">Meet the Pets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sxnHomeTop">
+      <div id="match-my-pet-logo">
+        <img id="logo" src="assets/mmplogo.png" alt="logo">
+      </div>
+      <div id="page-title">
+        <h1>Match My Pet!</h1>
+      </div>
+      <div id="game-instructions">
+        <img src="assets/instructionsImage2.jpg" alt="instructions button">
+      </div>
+    </section>
+
+    <form id="user-input-form">
+      <fieldset>
+        <legend>Choose your level:</legend>
+        <label for="userName" class="required">Username:</label>
+        <input type="text" name="userName" required>
+
+        <label for="difficulty" class="required">Difficulty Level:</label>
+        <select name="difficulty" id="userDifficulty" required>
+          <option value="15">Easy</option>
+          <option value="10">Medium</option>
+          <option value="7">Hard</option>
+        </select>
+        <button type="submit">Lets play!</button>
+      </fieldset>
+    </form>
+    <section id="gameContainer">
+      <div id="cardboxes">
+        <!-- <div id="cardRowOne"> -->
+        <div class="card" id="row1card1">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row1card2">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row1card3">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row1card4">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row1card5">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row1card6">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <!-- </div>
+        <div id="cardRowTwo"> -->
+        <div class="card" id="row2card1">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row2card2">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row2card3">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row2card4">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row2card5">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <div class="card" id="row2card6">
+          <img class="cardFront" src="" alt="">
+          <img class="cardBack" src="assets/codefellowsimage.jpg" alt="codefellowsimage">
+        </div>
+        <!-- </div> -->
+      </div>
+    </section>
+    <section id="instructions">
+      <p>Welcome to Match my Pet, a fun matching game where you can see cute pictures of our pets and learn a little bit
+        more about them and us.</p>
+      <br>
+      <p>To play, enter your user name and select a difficulty level: easy, medium, or hard. Each level allows you a
+        limited number of turns. The harder the level, the fewer opportunities you have to get a correct match.</p>
+      <br>
+      <p>We hope you enjoy Match my Pet! Let's see if you can get on our <a href="leaderboard.html">leaderboard!</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div id="copyright">
+      <p>&copy; team objects</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" type="text/javascript"></script>
+
+</body>
+
+</html>

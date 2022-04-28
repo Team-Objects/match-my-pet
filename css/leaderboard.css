@@ -1,0 +1,94 @@
+
+body {
+  color: #023047;
+
+}
+/* div {
+  display: flex;
+  justify-content: center;
+} */
+
+header {
+  display: flex;
+  background-color: #8ECAE6;
+  height: 5em;
+  top: 50%;
+  right: 50%;
+}
+
+nav {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+header ul li {
+  display: inline;
+  padding: 0em 2em;
+  font-size: 1em;
+  align-items: bottom;
+}
+
+h1 {
+  font-size: 2em;
+  font-style: italic;
+  height: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#match-my-pet-logo {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+#logo {
+  width: 180px;
+  height: 80px;
+  margin-bottom: 1px;
+}
+
+#sxnTop {
+  /* this holds the logos and the page-title */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #FFB703;
+}
+
+#page-title {
+  padding: 1em 0em;
+}
+
+table, th, td {
+  border: 2px solid;
+  border-color: #8ECAE6;
+  background-color: #FFB703;
+  width: max-content;
+  padding: 4px;
+}
+
+/* img {
+  width: 500px;
+  height: auto;
+  margin: 40px;
+} */
+
+section {
+  display: flex;
+}
+table {
+  text-align: center;
+  margin-left: 10%;
+}
+
+body {
+  background-color: #023047;
+  font-family:'Franklin Gothic Medium';
+}
+
+#leaderboard-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}

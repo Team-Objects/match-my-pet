@@ -1,0 +1,125 @@
+/* color palette
+
+#8ECAE6 - pale blue
+#219EBC - med blue
+#023047 - dark blue
+#FFB703 - golden yellow
+#FB8500 - rich yellow orange */
+
+header {
+  display: flex;
+  background-color: #8ECAE6;
+  height: 5em;
+  top: 50%;
+  right: 50%;
+}
+
+nav {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+header ul li {
+  display: inline;
+  padding: 0em 2em;
+  font-size: 1em;
+  align-items: bottom;
+}
+
+body {
+  color: #023047;
+  font-family:'Franklin Gothic Medium';
+}
+
+h1 {
+  font-size: 2em;
+  height: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#match-my-pet-logo {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+#logo {
+  width: 180px;
+  height: 80px;
+  margin-bottom: 1px;
+}
+
+#sxnTop {
+  /* this holds the logos and the page-title */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #FFB703;
+}
+
+#page-title {
+  padding: 1em 0em;
+}
+
+
+#bioSxn {
+  display: flex;
+  flex-direction: column;
+  background-color: #023047;
+}
+
+#biosbox {
+  display: flex;
+  background-color: #219EBC;
+  max-width: 1200px;
+  align-self: center;
+}
+
+#bios {
+  display: flex;
+  flex-direction: column;
+  background-color: #219EBC;
+  font-size: larger;
+  text-align: justify;
+}
+
+#Irish {
+  width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#Mochi {
+  width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#Greg {
+  width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#ShelbyGang {
+  width: 300px;
+  height: 440px;
+  margin: 10px 10px 10px 20px;
+}
+
+#bios p {
+  padding: 0px 15px 20px 20px;
+  text-align: justify;
+}
+
+#bios h5 {
+  padding: 5px 0px 3px 20px;
+  font-weight: bold;
+}
+
+#copyright {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
