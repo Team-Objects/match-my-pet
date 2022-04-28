@@ -83,33 +83,52 @@ h1 {
 }
 
 #cardboxes {
-  background-color: #219EBC;
-  max-width: 1200px;
-  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 30px;
+  perspective: 1000px;
 }
 
-#cardRowOne div .backcard  {
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10px 10px 5px 10px;
-  max-width: 1000px;
+#cardboxes img {
+  width:200px;
+  height: 200px;
+  backface-visibility: hidden;
 }
 
-#cardRowTwo div .backcard {
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 5px 10px 10px 10px;
-  max-width: 1000px;
+.card {
+  position:relative;
+  transition: transform 1s;
+  transform: scale(1);
+  transform-style: preserve-3d;
+
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+/* .card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+} */
+
+.cardFront {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg)
+}
+
+.cardBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
 }
 
 #copyright {
   position: fixed;
   bottom: 0;
   right: 0;
-}
-
-img {
-  width: 100px;
-  height: 100px;
 }
 

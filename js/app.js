@@ -1,28 +1,9 @@
 'use strict';
 
-/* needs:
-
-create game board
-
-way to randomize(of shuffle) images
-
-hard code each photo twice (stretch: do we want a way to add more cards and have placeholder photos?)
-
-event handler for click
-cardsMatch function - way to determine if cards matched
-
-
-  */
-
 // DOM references
 
-
-// global variables
-// const easyRounds = 15;
-// const mediumRounds = 10;
-// const hardRounds = 7;
-
 const cardArray = [];
+let userArray = [];
 
 let newUserData = null;
 
@@ -45,21 +26,31 @@ let clicks = 0;
 let firstClickParent = null;
 let secondClickParent = null;
 
+let retrievedUser = localStorage.getItem('user');
+
+let parsedUser = JSON.parse(retrievedUser);
+
 // constructor functions
 
-function User(userName, difficulty){
+function User(userName, difficulty) {
   this.userName = userName;
   this.difficulty = difficulty;
   this.gamesWon = 0;
   this.gamesPlayed = 0;
+
+  userArray.push(this);
 }
 
-function Cards(cardName, fileExstention = 'png'){
+function Cards(cardName, fileExstention = 'png') {
   this.cardName = cardName;
   this.img = `assets/${cardName}.${fileExstention}`;
 
   cardArray.push(this);
 }
+
+// if(retrievedUser) {
+//   newUserData = parsedUser;
+// } 
 
 // instantiating cards
 
@@ -90,36 +81,54 @@ function shuffleArray(tempArr) {
 
 shuffleArray(cardArray);
 
+let showUsGame = document.getElementById('cardboxes');
+showUsGame.style.visibility = 'hidden';
+
 const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
-  const userName = event.target.userName.value;
-  const difficulty = parseInt(event.target.difficulty.value);
-  console.log(difficulty);
-  newUserData = new User(userName, difficulty);
+  let userName = event.target.userName.value;
+  let difficulty = parseInt(event.target.difficulty.value);
+  console.log(userName);
+  if (retrievedUser) {
+    userArray = parsedUser;
+    for(let i = 0; i < parsedUser.length; i++) {
+      if (userName === parsedUser[i].userName) {
+        newUserData = parsedUser[i];
+        newUserData.difficulty = difficulty;
+      }
+    }
+  } else {
+    newUserData = new User(userName, difficulty);
+  }
+    showUsGame.style.visibility = 'visible';
 });
 
 // for loop that adds an event listener to each item in the gameCards array
 // this refers to each card div that contains a front and back card
-for(let i = 0; i < gameCards.length; i++) {
+for (let i = 0; i < gameCards.length; i++) {
   gameCards[i].addEventListener('click', handleCardClick);
 }
 
 // for loop that adds a src and alt id to each item in cardFronts
 // this refers to each img tag that contains a cardFront 
-for(let i = 0; i < cardArray.length; i++) {
+for (let i = 0; i < cardArray.length; i++) {
   cardFronts[i].src = cardArray[i].img;
   cardFronts[i].alt = cardArray[i].cardName;
 }
+let firstParent = null;
+let secondParent = null;
 
 // this is a helper function which will be called inside our event listener
 // it will check what the value of the clicks variable is and give our globally scoped variables new values
 function getClickInfo(imgClicked) {
   // imgClicked is a placeholder for whatever data we push when we call this function
-  if(clicks === 0) {
+  if (clicks === 0) {
     // firstCardClicked is assigned the previousElementSibling.alt of the cardBack img
     // previousElementSibling.alt will give us the alt id of the pet image (mochi) so that we can use this in our matchChecker
     // previousElementSibling is needed because imgClicked is refering to the cardBack img
+    imgClicked.parentElement.classList.add('flip');
+    firstParent = imgClicked.parentElement;
     firstCardClicked = imgClicked.previousElementSibling.alt;
     // firstClickParent is assigned the parentElement.id
     // this means it is assigned the id of the parent div (row1card1... ect)
@@ -127,6 +136,8 @@ function getClickInfo(imgClicked) {
     clicks++;
   } else {
     // repeats above but for second card
+    imgClicked.parentElement.classList.add('flip');
+    secondParent = imgClicked.parentElement;
     secondCardClicked = imgClicked.previousElementSibling.alt;
     secondClickParent = imgClicked.parentElement.id;
     clicks++;
@@ -144,9 +155,9 @@ function handleCardClick(event) {
   getClickInfo(imageClicked);
   console.log(firstCardClicked);
   console.log(secondCardClicked);
-  
+
   // helper function to check if alt id matches
-  if(clicks === 2) {
+  if (clicks === 2) {
     // if we have selected 2 images, call another helper function
     matchChecker();
     // reset all of these variables for the next 'round' of clicks
@@ -155,57 +166,70 @@ function handleCardClick(event) {
     clicks = 0;
   }
 
+  // function flipCard() {
+  //   console.log("THIS",this);
+  //   this.classList.toggle('flip');
+  // }
+
+  // card.forEach(card => card.addEventListener('click', flipCard));
+
+
+  if (newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
+    for (let i = 0; i < gameCards.length; i++) {
+      gameCards[i].removeEventListener('click', handleCardClick);
+    }
+    if (newUserData.difficulty === 0) {
+      newUserData.gamesPlayed++;
+
+    } else if (cardsLeftToMatch === 0) {
+      newUserData.gamesPlayed++;
+      newUserData.gamesWon++;
+    }
+    let stringifiedProducts = JSON.stringify(userArray);
+
+    localStorage.setItem('user', stringifiedProducts);
+  }
 }
 
 // stretch: let correctMatch = 0;
-let totalMatches = 6;
+let cardsLeftToMatch = 6;
 
 // flip function into eventListener
 // or add class name for flipped alt1
 
 // helper function - should this be prototype to access User object difficulty?
-function matchChecker(){
+function matchChecker() {
   let cardDiv1 = document.getElementById(firstClickParent);
   let cardDiv2 = document.getElementById(secondClickParent);
-// credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
-  if(firstCardClicked === secondCardClicked){
+  // credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
+  if (firstCardClicked === secondCardClicked) {
     cardDiv1.style.visibility = 'hidden';
     cardDiv2.style.visibility = 'hidden';
-    totalMatches = totalMatches - 1;
-// stretch:    correctMatch++;
+    cardsLeftToMatch = cardsLeftToMatch - 1;
+    // stretch:    correctMatch++;
   } else {
-// subtract one from difficulty round
-// flip card to reveal back of card
+    unFlip();
   }
+  newUserData.difficulty--;
+}
+
+function unFlip() {
+  setTimeout(() => {
+    firstParent.classList.remove('flip');
+    secondParent.classList.remove('flip');
+  }, 2000)
 }
 
 
 
-//if secondClick === firstClick
-//  ?? maybe
-//  ??
-//      hide div's of both images
-//    
-//  else { subtract from difficulty tally}
 
 
-// variable for times clicked (2)
-// helper function to determine which variable to put the alt id of the clicked image into
-// helper function 
 
-// endGame 
+
+
 
 // *******************
 // AUDREY PLEASEEEE HELP
-
-// event handlers - need: image clicked to display card
-
-
-// We need to contain two event clicks
-// clickOne and clickTwo
-// We need to compare them
-
-// Maybe backup to render func?
 // ********************
 
 // local storage
