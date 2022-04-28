@@ -3,6 +3,7 @@
 // DOM references
 
 const cardArray = [];
+let userArray = [];
 
 let newUserData = null;
 
@@ -11,7 +12,7 @@ let newUserData = null;
 let gameCards = document.getElementsByClassName('card');
 console.log(gameCards);
 // creates an array that holds the html tags with a class of cardFront
-// this grabs the individual img tags so that we can populate them
+// this grabs the individual img tags so that we can populate them 
 let cardFronts = document.getElementsByClassName('cardFront');
 
 // creating new variables for our getCardInfo() function which are also used in our matchChecker() function
@@ -25,6 +26,10 @@ let clicks = 0;
 let firstClickParent = null;
 let secondClickParent = null;
 
+let retrievedUser = localStorage.getItem('user');
+
+let parsedUser = JSON.parse(retrievedUser);
+
 // constructor functions
 
 function User(userName, difficulty) {
@@ -32,6 +37,8 @@ function User(userName, difficulty) {
   this.difficulty = difficulty;
   this.gamesWon = 0;
   this.gamesPlayed = 0;
+
+  userArray.push(this);
 }
 
 function Cards(cardName, fileExstention = 'png') {
@@ -40,6 +47,10 @@ function Cards(cardName, fileExstention = 'png') {
 
   cardArray.push(this);
 }
+
+// if(retrievedUser) {
+//   newUserData = parsedUser;
+// } 
 
 // instantiating cards
 
@@ -76,12 +87,21 @@ showUsGame.style.visibility = 'hidden';
 const formElem = document.getElementById('user-input-form');
 formElem.addEventListener('submit', function (event) {
   event.preventDefault();
-  const userName = event.target.userName.value;
-  const difficulty = parseInt(event.target.difficulty.value);
+  let userName = event.target.userName.value;
+  let difficulty = parseInt(event.target.difficulty.value);
   console.log(userName);
-  newUserData = new User(userName, difficulty);
-
-  showUsGame.style.visibility = 'visible';
+  if (retrievedUser) {
+    userArray = parsedUser;
+    for(let i = 0; i < parsedUser.length; i++) {
+      if (userName === parsedUser[i].userName) {
+        newUserData = parsedUser[i];
+        newUserData.difficulty = difficulty;
+      }
+    }
+  } else {
+    newUserData = new User(userName, difficulty);
+  }
+    showUsGame.style.visibility = 'visible';
 });
 
 // for loop that adds an event listener to each item in the gameCards array
@@ -91,11 +111,13 @@ for (let i = 0; i < gameCards.length; i++) {
 }
 
 // for loop that adds a src and alt id to each item in cardFronts
-// this refers to each img tag that contains a cardFront
+// this refers to each img tag that contains a cardFront 
 for (let i = 0; i < cardArray.length; i++) {
   cardFronts[i].src = cardArray[i].img;
   cardFronts[i].alt = cardArray[i].cardName;
 }
+let firstParent = null;
+let secondParent = null;
 
 // this is a helper function which will be called inside our event listener
 // it will check what the value of the clicks variable is and give our globally scoped variables new values
@@ -105,6 +127,8 @@ function getClickInfo(imgClicked) {
     // firstCardClicked is assigned the previousElementSibling.alt of the cardBack img
     // previousElementSibling.alt will give us the alt id of the pet image (mochi) so that we can use this in our matchChecker
     // previousElementSibling is needed because imgClicked is refering to the cardBack img
+    imgClicked.parentElement.classList.add('flip');
+    firstParent = imgClicked.parentElement;
     firstCardClicked = imgClicked.previousElementSibling.alt;
     // firstClickParent is assigned the parentElement.id
     // this means it is assigned the id of the parent div (row1card1... ect)
@@ -112,6 +136,8 @@ function getClickInfo(imgClicked) {
     clicks++;
   } else {
     // repeats above but for second card
+    imgClicked.parentElement.classList.add('flip');
+    secondParent = imgClicked.parentElement;
     secondCardClicked = imgClicked.previousElementSibling.alt;
     secondClickParent = imgClicked.parentElement.id;
     clicks++;
@@ -140,22 +166,29 @@ function handleCardClick(event) {
     clicks = 0;
   }
 
+  // function flipCard() {
+  //   console.log("THIS",this);
+  //   this.classList.toggle('flip');
+  // }
 
-  const card = document.querySelectorAll('.card');
-
-  function flipCard() {
-    this.classList.toggle('flip');
-  }
-
-  card.forEach(card => card.addEventListener('click', flipCard));
+  // card.forEach(card => card.addEventListener('click', flipCard));
 
 
   if (newUserData.difficulty === 0 || cardsLeftToMatch === 0) {
     for (let i = 0; i < gameCards.length; i++) {
       gameCards[i].removeEventListener('click', handleCardClick);
     }
-  }
+    if (newUserData.difficulty === 0) {
+      newUserData.gamesPlayed++;
 
+    } else if (cardsLeftToMatch === 0) {
+      newUserData.gamesPlayed++;
+      newUserData.gamesWon++;
+    }
+    let stringifiedProducts = JSON.stringify(userArray);
+
+    localStorage.setItem('user', stringifiedProducts);
+  }
 }
 
 // stretch: let correctMatch = 0;
@@ -175,9 +208,16 @@ function matchChecker() {
     cardsLeftToMatch = cardsLeftToMatch - 1;
     // stretch:    correctMatch++;
   } else {
-    // flip card to reveal back of card
+    unFlip();
   }
   newUserData.difficulty--;
+}
+
+function unFlip() {
+  setTimeout(() => {
+    firstParent.classList.remove('flip');
+    secondParent.classList.remove('flip');
+  }, 2000)
 }
 
 
