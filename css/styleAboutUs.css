@@ -33,7 +33,7 @@ body {
 
 h1 {
   font-size: 2em;
-  font-style: italic;
+  font-family:'Franklin Gothic Medium';
   height: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -56,6 +56,7 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   background-color: #FFB703;
+  height: 130px;
 }
 
 #page-title {
@@ -102,7 +103,7 @@ h1 {
 
 #maybeCodeFellows {
   /* this is the box on the right of "About Us" same as "game-instructions" on index.html*/
-  background-color: #023047;
+  background-color: #FFB703;
   color: #8ECAE6;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -112,8 +113,8 @@ h1 {
 }
 
 #CFlogo {
-  width: 130px;
-  height: 30px;
+  width: 180px;
+  height: 60px;
   margin-bottom: 1px;
 }
 
