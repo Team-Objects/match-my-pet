@@ -51,9 +51,9 @@ function Cards(cardName, fileExstention = 'png') {
 }
 
 
-if (retrievedUser) {
-  newUserData = parsedUser;
-}
+// if (retrievedUser) {
+//   newUserData = parsedUser;
+// }
 
 // if(retrievedUser) {
 //   newUserData = parsedUser;
@@ -104,6 +104,7 @@ formElem.addEventListener('submit', function (event) {
     for (let i = 0; i < parsedUser.length; i++) {
       if (userName === parsedUser[i].userName) {
         newUserData = parsedUser[i];
+        console.log(parsedUser[i]);
         // newUserData.difficulty = difficulty;
       } else if (i === parsedUser.length-1){
         newUserData = new User(userName);
@@ -222,8 +223,10 @@ function matchChecker() {
   let cardDiv2 = document.getElementById(secondClickParent);
   // credit due: https://stackoverflow.com/questions/25209834/trying-to-make-a-div-disappear-with-javascript
   if (firstCardClicked === secondCardClicked) {
-    cardDiv1.style.visibility = 'hidden';
-    cardDiv2.style.visibility = 'hidden';
+    setTimeout(() => {
+      cardDiv1.style.visibility = 'hidden';
+      cardDiv2.style.visibility = 'hidden';
+    }, 1100);
     cardsLeftToMatch = cardsLeftToMatch - 1;
     // stretch:    correctMatch++;
   } else {
