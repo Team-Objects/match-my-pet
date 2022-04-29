@@ -31,12 +31,13 @@ header ul li {
 
 body {
   color: #023047;
-  font-family:'Franklin Gothic Medium';
+  font-family: Arial,
+    Helvetica,
+    sans-serif;
 }
 
 h1 {
   font-size: 2em;
-/*  font-family: 'Franklin Gothic Medium'; */
   height: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -50,13 +51,8 @@ h1 {
   margin-bottom: 1px;
 }
 
-/* #logo { this appears to be the MMP logo
-  width: 180px;
-  height: 80px;
-  margin-bottom: 1px;
-} */
-
 #game-instructions {
+  /* this is the logo on the right */
   margin-top: 2em;
   margin-bottom: 1em;
 }
@@ -66,15 +62,17 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   background-color: #FFB703;
+
 }
 
 #page-title {
   padding: 1em 0em;
 }
 
+/* Specific to index.html */
+
 #gameContainer {
   display: flex;
-  /* margin: 40px 0px 10px 40px; */
   flex-direction: column;
   background-color: #023047;
 }
@@ -136,8 +134,9 @@ h1 {
   background-color: #8ECAE6;
   font-size: 20px;
   height: 250px;
-  padding-top: 20px;
+  padding-top: 100px;
 }
+
 
 #footer {
   padding: 20px;
@@ -157,5 +156,5 @@ h1 {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #023047;
-  
+
 }
