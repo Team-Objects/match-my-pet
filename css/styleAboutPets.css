@@ -29,7 +29,9 @@ header ul li {
 
 body {
   color: #023047;
-  font-family:'Franklin Gothic Medium';
+  font-family: Arial,
+    Helvetica,
+    sans-serif;
 }
 
 h1 {
@@ -42,12 +44,18 @@ h1 {
 #match-my-pet-logo {
   margin-top: 2em;
   margin-bottom: 1em;
-}
-
-#logo {
   width: 180px;
   height: 80px;
   margin-bottom: 1px;
+}
+
+#maybeCodeFellows {
+  /* this is the logo on the right */
+  margin-top: 2em;
+  margin-bottom: 1em;
+  width: 180px;
+  height: 80px;
+  margin-bottom: 59px;
 }
 
 #sxnTop {
@@ -72,7 +80,7 @@ h1 {
 #biosbox {
   display: flex;
   background-color: #219EBC;
-  max-width: 1200px;
+  max-width: 1300px;
   align-self: center;
 }
 
@@ -103,7 +111,7 @@ h1 {
 }
 
 #ShelbyGang {
-  width: 300px;
+  width: 320px;
   height: 440px;
   margin: 10px 10px 10px 20px;
 }
@@ -111,10 +119,11 @@ h1 {
 #bios p {
   padding: 0px 15px 20px 20px;
   text-align: justify;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 #bios h5 {
-  padding: 5px 0px 3px 20px;
+  padding: 5px 15px 3px 20px;
   font-weight: bold;
 }
 
